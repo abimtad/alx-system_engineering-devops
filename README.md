@@ -41,3 +41,5 @@
 - 2023-02-21 10:09: recorded usage and setup clarification for `alx-system_engineering-devops`.
 
 - 2023-02-23 17:06: updated project backlog context for `alx-system_engineering-devops`.
+
+- 2023-02-23 17:07: noted follow-up engineering tasks for `alx-system_engineering-devops`.
