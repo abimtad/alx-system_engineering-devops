@@ -329,3 +329,5 @@
 - 2023-04-19 18:01: noted follow-up engineering tasks for `alx-system_engineering-devops`.
 
 - 2023-05-17 16:07: documented implementation notes for `alx-system_engineering-devops`.
+
+- 2023-05-18 18:35: recorded usage and setup clarification for `alx-system_engineering-devops`.
