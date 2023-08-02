@@ -161,3 +161,5 @@
 - 2023-07-25 17:42: captured maintenance observations for `alx-system_engineering-devops`.
 
 - 2023-07-28 18:16: noted follow-up engineering tasks for `alx-system_engineering-devops`.
+
+- 2023-08-02 16:12: recorded usage and setup clarification for `alx-system_engineering-devops`.
