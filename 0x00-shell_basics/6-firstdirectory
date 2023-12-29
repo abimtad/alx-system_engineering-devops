@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdri /temp/my_first_directory
+mkdiri /temp/my_first_directory
