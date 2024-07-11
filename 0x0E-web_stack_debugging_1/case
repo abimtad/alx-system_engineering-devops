@@ -1,8 +1,5 @@
-#!/usr/bin/env bash
-# configures a server to listening on port 80 of all servers active IPv4 IPs
+# video
 
-sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-sudo service nginx restart
 #!/usr/bin/env bash
 # Configures an Nginx server to listen on prt 80
 
@@ -14,3 +11,28 @@ rm /etc/ngnix/sites-enabled/default
 
 # restart nginx
 service nginx restart
+
+# besrate:
+
+#!/usr/bin/env bash
+# Configures an Nginx server to listen on prt 80
+
+# removes the default Nginx configuration file
+
+rm /etc/ngnix/sites-enabled/default
+
+# Configure Nginx to listen on port 80 for all active IPV4 IPs
+
+# restart nginx
+service nginx restart
+
+# abeni
+
+#!/usr/bin/env bash
+# This script gets Nginx running and to start listening on
+# port 80 of all available IP addresses
+
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restartw
+
