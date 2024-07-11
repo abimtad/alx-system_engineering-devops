@@ -1,16 +1,54 @@
 #!/usr/bin/env bash
-# print domains and subdomains
+# This script displays information about subdomains of a
+# domain accepting the domain and the subdomain as arguments
+# When only the domain is provided, the script will display
+# information for its subdomains www, lb-01, web-01, web-02
+# in the specified order.
+# The information contains the IP address of the subdomain,
+# and the Record type (A or CNAME) of the subdomain.
+# This script uses the awk command and at least one Bash function
+# to display the information.
 
-print_domain_subdomain () {
-    dig "$1" | grep -A1 'ANSWER SECTION:' | sed -r "s/$1./$2/g" | awk -F" " ' NR==2 { print "The subdomain " $1 " is a " $4 " record and points to " $5 }'
+# Function to determine record type of a subdomain
+get_record_type() {
+  local subdomain=$1
+  local domain=$2
+  local result=$(dig +short $subdomain.$domain)
+
+  # Check if the result is an IP address (A record) or a domain name (CNAME record)
+  if [[ $result =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo "A"
+  else
+    echo "CNAME"
+  fi
+}
+# Function to display the IP address and Record type of a subdomain
+display_info() {
+  local subdomain=$1
+  local domain=$2
+  local ip=$(dig +short $subdomain.$domain)
+  local record=$(get_record_type $subdomain $domain)
+  echo "The subdomain $subdomain is a $record record and points to $ip"
 }
 
-if [ "$#" -eq 2 ]
-then
-    print_domain_subdomain "$2.$1" "$2"
-else
-    print_domain_subdomain "www.$1" "www"
-    print_domain_subdomain "lb-01.$1" "lb-01"
-    print_domain_subdomain "web-01.$1" "web-01"
-    print_domain_subdomain "web-02.$1" "web-02"
+# Check if the number of arguments is less than 1
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 <domain> [<subdomain>]"
+  exit 1
 fi
+
+# Assign the domain and subdomain variables
+domain=$1
+subdomain=$2
+
+# Display information for the specified subdomain or default subdomains
+if [ -z $subdomain ]; then
+  display_info www $domain
+  display_info lb-01 $domain
+  display_info web-01 $domain
+  display_info web-02 $domain
+else
+  display_info $subdomain $domain
+fi
+
+exit 0
