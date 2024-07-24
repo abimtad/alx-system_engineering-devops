@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Makes the machine to run the command as the user
+# passed by an argument
+su "$1" -s /bin/bash -c 'whoami'
