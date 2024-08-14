@@ -16,7 +16,7 @@ file { '/var/www/html':
 
 # Restart Apache to apply changes
 service { 'apache2':
-  ensure => running,
-  enable => true,
+  ensure    => running,
+  enable    => true,
   subscribe => File['/var/www/html'], # Restart if permissions were changed
 }
